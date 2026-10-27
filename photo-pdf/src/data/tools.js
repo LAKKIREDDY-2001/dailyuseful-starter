@@ -1,0 +1,77 @@
+export const categories = [
+  'All Tools', 'Workflows', 'Organize PDF', 'Optimize PDF', 'Convert PDF', 'Edit PDF',
+  'PDF Security', 'PDF Intelligence', 'Image Resize', 'Image Compression', 'Image Conversion', 'Exam Photo & Signature',
+];
+
+const definitions = [
+  ['merge-pdf','Merge PDF','Combine PDFs in the order you choose.','Organize PDF','files'],
+  ['split-pdf','Split PDF','Save page ranges as separate PDF files.','Organize PDF','file-output'],
+  ['organize-pdf','Organize PDF','Reorder, rotate, and remove pages.','Organize PDF','panels-top-left'],
+  ['remove-pdf-pages','Remove PDF Pages','Delete selected pages and keep the rest.','Organize PDF','file-minus'],
+  ['extract-pdf-pages','Extract PDF Pages','Create a PDF from selected pages.','Organize PDF','copy'],
+  ['rotate-pdf','Rotate PDF','Rotate pages and export a new document.','Organize PDF','rotate-cw'],
+  ['page-numbers','Page Numbers','Add page numbers with simple placement controls.','Organize PDF','list-ordered'],
+  ['scan-to-pdf','Scan to PDF','Turn document photos into an ordered PDF.','Workflows','scan-line'],
+  ['crop-pdf','Crop PDF','Change the visible page area.','Organize PDF','crop'],
+  ['compress-pdf','Compress PDF','Rewrite a PDF and compare the actual file size.','Optimize PDF','minimize-2'],
+  ['repair-pdf','Repair PDF','Validate and resave PDFs this browser can read.','Optimize PDF','wrench'],
+  ['pdf-to-jpg','PDF to JPG','Render PDF pages as downloadable images.','Convert PDF','image'],
+  ['jpg-to-pdf','JPG to PDF','Arrange images and create a PDF.','Convert PDF','images'],
+  ['word-to-pdf','Word to PDF','Advanced conversion — not available in this free version.','Convert PDF','file-text'],
+  ['pdf-to-word','PDF to Word','Advanced conversion — not available in this free version.','Convert PDF','file-text'],
+  ['excel-to-pdf','Excel to PDF','Advanced conversion — not available in this free version.','Convert PDF','table'],
+  ['pdf-to-excel','PDF to Excel','Advanced conversion — not available in this free version.','Convert PDF','sheet'],
+  ['powerpoint-to-pdf','PowerPoint to PDF','Advanced conversion — not available in this free version.','Convert PDF','presentation'],
+  ['pdf-to-powerpoint','PDF to PowerPoint','Advanced conversion — not available in this free version.','Convert PDF','presentation'],
+  ['html-to-pdf','Print to PDF','Print text and a photo to PDF using your browser.','Convert PDF','code'],
+  ['pdf-to-pdfa','PDF to PDF/A','Archival validation and conversion are not available.','Convert PDF','archive'],
+  ['pdf-to-markdown','PDF to Markdown','Extract selectable text into a simple Markdown file.','Convert PDF','file-code'],
+  ['edit-pdf','Edit PDF','Add a text note to a selected page.','Edit PDF','pencil'],
+  ['watermark-pdf','Watermark','Add a text watermark to every page.','Edit PDF','stamp'],
+  ['sign-pdf','Sign PDF','Place a signature image on one page.','Edit PDF','signature'],
+  ['pdf-forms','PDF Forms','Inspect and fill supported interactive form fields.','Edit PDF','form-input'],
+  ['protect-pdf','Protect PDF','Password encryption is not available in this version.','PDF Security','lock-keyhole'],
+  ['unlock-pdf','Unlock PDF','Password removal is not available in this version.','PDF Security','unlock'],
+  ['redact-pdf','Redact PDF','Secure content removal is not available in this version.','PDF Security','scan-eye'],
+  ['ocr-pdf','OCR PDF','Local OCR engine is not included in this version.','PDF Intelligence','scan-text'],
+  ['compare-pdf','Compare PDF','Side-by-side page comparison is planned.','PDF Intelligence','columns-2'],
+  ['ai-summarizer','Local PDF Summary','Extract a short local summary from selectable text.','PDF Intelligence','list-collapse'],
+  ['translate-pdf','Translate PDF','Offline translation models are not included.','PDF Intelligence','languages'],
+  ['resize-image','Resize Image','Set exact pixel dimensions and keep proportions.','Image Resize','scan'],
+  ['aspect-ratio','Aspect Ratio & Frame Resizer','Fit, crop, or stretch to a preset or custom frame.','Image Resize','ratio'],
+  ['crop-image','Crop Image','Crop to an exact size and aspect ratio.','Image Resize','crop'],
+  ['compress-image','Compress Image','Choose image format and quality; see measured size.','Image Compression','image-down'],
+  ['exam-photo','Exam Photo Maker','Prepare a photo to specifications you enter.','Exam Photo & Signature','id-card'],
+  ['passport-photo','Passport Photo Maker','Set custom dimensions; verify official requirements.','Exam Photo & Signature','contact-round'],
+  ['signature-resizer','Signature Resizer','Crop and resize a signature image.','Exam Photo & Signature','signature'],
+  ['image-to-jpg','Image to JPG','Convert a browser-supported image to JPEG.','Image Conversion','file-image'],
+  ['image-to-png','Image to PNG','Convert a browser-supported image to PNG.','Image Conversion','file-image'],
+  ['image-to-webp','Image to WebP','Convert a browser-supported image to WebP.','Image Conversion','file-image'],
+  ['image-dimensions','Image Dimensions Checker','Inspect image size and pixel dimensions.','Image Conversion','ruler'],
+  ['background-color','Background Color Changer','Place an image over a solid canvas color.','Image Conversion','palette'],
+];
+
+export const tools = definitions.map(([id, name, description, category, icon]) => ({ id, name, description, category, icon, path: `/tools/${id}` }));
+export const toolsById = Object.fromEntries(tools.map((tool) => [tool.id, tool]));
+
+export const supportedTools = new Set([
+  'merge-pdf','split-pdf','organize-pdf','remove-pdf-pages','extract-pdf-pages','rotate-pdf','page-numbers','html-to-pdf',
+  'scan-to-pdf','crop-pdf','compress-pdf','repair-pdf','pdf-to-jpg','jpg-to-pdf','pdf-to-markdown',
+  'edit-pdf','watermark-pdf','sign-pdf','pdf-forms','ai-summarizer',
+  'resize-image','aspect-ratio','crop-image','compress-image','exam-photo','passport-photo','signature-resizer',
+  'image-to-jpg','image-to-png','image-to-webp','image-dimensions','background-color',
+]);
+
+export const toolNotes = {
+  'compress-pdf': 'This safe rewrite can remove some structural overhead, but it does not re-encode embedded images. A smaller result is not guaranteed.',
+  'html-to-pdf': 'Uses your browser’s print feature for text and one selected image. Choose “Save as PDF” in the print dialog. It does not import arbitrary websites or HTML files.',
+  'repair-pdf': 'Recovery only works when pdf-lib can parse the document. It cannot reconstruct missing or severely damaged PDF data.',
+  'crop-pdf': 'Cropping changes the visible page box. It does not securely erase hidden content. Do not use it to remove sensitive information.',
+  'pdf-to-markdown': 'Text extraction keeps basic page order only. Layout, tables, and images are not preserved.',
+  'sign-pdf': 'This places an image of a signature. It is not a certificate-backed digital signature or identity verification.',
+  'pdf-forms': 'Only standard interactive AcroForm fields supported by pdf-lib can be inspected or filled.',
+  'ai-summarizer': 'This is a local extractive summary of selectable text, not a generative AI model. Scanned pages need OCR, which is not included.',
+  'background-color': 'This changes the canvas behind transparent pixels. It does not detect or replace the background in a photograph.',
+  'exam-photo': 'No authority presets are bundled. Enter dimensions from the current official application specifications.',
+  'passport-photo': 'Country and application requirements differ. Verify the current official rules before using an export.',
+};

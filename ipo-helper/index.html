@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Manual IPO allotment guide with official status links, personal date reminders, and a private checklist. No live IPO data.">
+<meta name="theme-color" content="#f5f7fb"><title>IPO Allotment Helper — IPO Guide India</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="./" aria-label="IPO Guide India home">₹ IPO Guide India</a><span class="live-note"><span aria-hidden="true">●</span> Static guide · no live IPO feed</span></header>
+<main>
+<section class="hero" aria-labelledby="page-title">
+<p class="eyebrow">INDIAN IPO RESOURCE</p><h1 id="page-title">IPO allotment,<br><span>made easier.</span></h1>
+<p>Use official status pages, keep your own dates in one place, and follow a simple application checklist.</p>
+<div class="notice" role="note"><b>No live IPO data:</b> This helper does not fetch current issues, dates, subscription figures, or allotment results. Enter dates from issuer or exchange announcements and verify them there again.</div>
+</section>
+<nav class="jump-links" aria-label="Page sections"><a href="#official">Official links</a><a href="#tracker">My date tracker</a><a href="#checklist">Checklist</a><a href="#safety">Safety</a></nav>
+<section class="panel" id="official" aria-labelledby="official-title">
+<p class="eyebrow">QUICK LINKS</p><h2 id="official-title">Official status pages</h2>
+<p class="muted">Confirm the registrar named in the IPO's offer documents. These links open third-party sites. Check the domain and issue before entering personal details.</p>
+<div class="registrars">
+<a class="registrar" href="https://in.mpms.mufg.com/Initial_Offer/public-issues.html" target="_blank" rel="noopener noreferrer"><span class="symbol" aria-hidden="true">↗</span><strong>MUFG Intime (formerly Link Intime)</strong><small>Registrar public issues page ↗</small></a>
+<a class="registrar" href="https://ipostatus.kfintech.com/ipostatus" target="_blank" rel="noopener noreferrer"><span class="symbol" aria-hidden="true">↗</span><strong>KFin Technologies</strong><small>IPO status page ↗</small></a>
+<a class="registrar" href="https://ipo.bigshareonline.com/IPO_Status.html" target="_blank" rel="noopener noreferrer"><span class="symbol" aria-hidden="true">↗</span><strong>Bigshare Services</strong><small>IPO allotment status ↗</small></a>
+<a class="registrar" href="https://www.bseindia.com/investors/appli_check.aspx" target="_blank" rel="noopener noreferrer"><span class="symbol" aria-hidden="true">↗</span><strong>BSE application status</strong><small>Official BSE page ↗</small></a>
+<a class="registrar" href="https://www.nseindia.com/invest/check-trades-bids-verify-ipo-bids/" target="_blank" rel="noopener noreferrer"><span class="symbol" aria-hidden="true">↗</span><strong>NSE IPO bid verification</strong><small>Verify bid details held by NSE ↗</small></a>
+</div>
+<p class="source-note">Status page URLs can move. If a link fails, start from the exchange or registrar's official homepage. <a href="https://investor.sebi.gov.in/ipo_through_asba.html" target="_blank" rel="noopener noreferrer">SEBI investor guide to IPO applications ↗</a></p>
+</section>
+<section class="panel" aria-labelledby="steps-title"><p class="eyebrow">STEP BY STEP</p><h2 id="steps-title">How to check an allotment</h2>
+<ol class="steps">
+<li><span aria-hidden="true">1</span><div><b>Check the official issue timetable</b><p>Use the issuer's or exchange's announcement. Dates can change.</p></div></li>
+<li><span aria-hidden="true">2</span><div><b>Confirm the registrar</b><p>Use the registrar named in the offer documents for that issue.</p></div></li>
+<li><span aria-hidden="true">3</span><div><b>Open its official status page</b><p>Check the address bar and select the correct issue before entering anything.</p></div></li>
+<li><span aria-hidden="true">4</span><div><b>Review the result and bank status</b><p>If the result is not posted, check later through official channels. Your broker or bank can help with application or mandate questions.</p></div></li>
+</ol></section>
+<section class="panel" id="tracker" aria-labelledby="tracker-title">
+<p class="eyebrow">ON THIS DEVICE</p><h2 id="tracker-title">My IPO date tracker</h2>
+<p class="muted">Save multiple issue names and dates you enter yourself. They stay in this browser's local storage and are not sent to a server. Do not enter PAN, application numbers, bank details, or UPI information.</p>
+<form id="trackerForm" class="tracker-form">
+<div class="field"><label for="issueName">Issue name</label><input id="issueName" name="issueName" type="text" maxlength="80" autocomplete="off" required></div>
+<div class="date-fields">
+<div class="field"><label for="closeDate">Issue closing date <span>(optional)</span></label><input id="closeDate" name="closeDate" type="date"></div>
+<div class="field"><label for="allotmentDate">Expected allotment date <span>(optional)</span></label><input id="allotmentDate" name="allotmentDate" type="date"></div>
+</div>
+<p class="field-hint">Dates are manual reminders, not verified or updated by this site. Compare them with the latest official announcement.</p>
+<div class="tracker-actions"><button class="button primary" type="submit">Save issue on this device</button><button class="button secondary" id="clearTracker" type="button">Clear all saved issues</button></div>
+</form>
+<p id="trackerStatus" class="status" role="status" aria-live="polite"></p>
+<div id="trackerResults" class="tracker-results" hidden aria-live="polite"></div>
+</section>
+<section class="panel" id="checklist" aria-labelledby="checklist-title">
+<p class="eyebrow">PERSONAL CHECKLIST</p><h2 id="checklist-title">Keep track of your application</h2>
+<p class="muted">Only these checkmarks are saved in this browser. They are never uploaded.</p>
+<div class="checklist">
+<label><input type="checkbox" data-check="offer"> Read the offer details and risks</label>
+<label><input type="checkbox" data-check="application"> Checked application details with my broker</label>
+<label><input type="checkbox" data-check="mandate"> Confirmed the payment mandate through my bank or UPI app</label>
+<label><input type="checkbox" data-check="date"> Verified the allotment date from an official announcement</label>
+<label><input type="checkbox" data-check="result"> Checked the result on the correct official status page</label>
+<label><input type="checkbox" data-check="bank"> Checked bank mandate and demat account through official channels</label>
+</div><p id="checklistStatus" class="status" role="status" aria-live="polite"></p>
+</section>
+<section class="panel" id="safety" aria-labelledby="safety-title"><p class="eyebrow">STAY SAFE</p><h2 id="safety-title">Investor safety reminders</h2>
+<ul class="safe"><li>An IPO application does not guarantee an allotment or profit.</li><li>Never share your UPI PIN, OTP, password, or full banking credentials with this site or another person.</li><li>Use the registrar stated in official issue documents. Check the domain before entering details.</li><li>This independent educational page is not affiliated with BSE, NSE, SEBI, any registrar, broker, or issuer. It is not investment advice.</li></ul>
+</section>
+</main>
+<footer><p>© <span id="year"></span> IPO Guide India · <a href="#disclaimer">Disclaimer</a></p><p id="disclaimer" class="muted">Dates, availability, links, and processes may change. Verify with the issuer, exchange, registrar, broker, or bank. Saved dates and checklist selections remain in this browser until cleared.</p></footer>
+<script src="script.js"></script>
+</body></html>
