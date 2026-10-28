@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Link, Route, Routes, useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowRight, Check, ChevronDown, CircleHelp, Image, LockKeyhole, ScanLine, Search, ShieldCheck, Upload, WandSparkles } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, CircleHelp, Image, LockKeyhole, ScanLine, Search, ShieldCheck, Upload, WandSparkles, X } from 'lucide-react';
 import { categories, supportedTools, toolNotes, tools, toolsById } from './data/tools.js';
 import { iconFor } from './components/Icons.jsx';
 import { Footer, Header, ToolCard } from './components/SiteParts.jsx';
