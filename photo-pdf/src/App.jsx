@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Link, Route, Routes, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowRight, Check, ChevronDown, CircleHelp, Image, LockKeyhole, ScanLine, Search, ShieldCheck, Upload, WandSparkles, X } from 'lucide-react';
-import { categories, supportedTools, toolNotes, tools, toolsById } from './data/tools.js';
+import { categories, supportedTools, toolNotes, toolGuides, tools, toolsById } from './data/tools.js';
 import { iconFor } from './components/Icons.jsx';
 import { Footer, Header, ToolCard } from './components/SiteParts.jsx';
 import PrintTool from './components/PrintTool.jsx';
@@ -112,6 +112,7 @@ function ToolPage() {
       <div className="tool-heading"><div className="tool-heading-icon">{iconFor(tool.icon)}</div><div><span className="eyebrow">{tool.category.toUpperCase()}</span><h1>{tool.name}</h1><p>{tool.description}</p></div></div>
       {supported ? <ToolWorkspace tool={tool} /> : <div className="unavailable panel"><span className="coming-badge">ADVANCED · NOT AVAILABLE</span><h2>This tool is not available in this version</h2><p>{tool.description} FileFix does not upload files to an external service. A future version would need a reliable local engine or your explicit consent before using a remote service.</p><div className="related-links"><Link to="/tools/pdf-to-markdown">Try PDF text extraction</Link><Link to="/tools/pdf-to-jpg">Try PDF to JPG</Link><Link to="/">Browse available tools</Link></div></div>}
       {supported && toolNotes[tool.id] && <div className="tool-note"><CircleHelp size={18}/><p>{toolNotes[tool.id]}</p></div>}
+      {supported && toolGuides[tool.id] && <ToolGuide guide={toolGuides[tool.id]} />}
       <RelatedTools current={tool} />
       <AdSlot />
     </main>
@@ -125,6 +126,21 @@ function ToolWorkspace({ tool }) {
       ? <ImageTool key={tool.id} tool={tool} />
       : <PdfTool key={tool.id} tool={tool} />}
   </Suspense>;
+}
+
+
+function ToolGuide({ guide }) {
+  return <section className="tool-guide" aria-labelledby="tool-guide-title">
+    <span className="eyebrow">HOW TO USE THIS TOOL</span>
+    <h2 id="tool-guide-title">{guide.heading}</h2>
+    <p className="tool-guide-intro">{guide.intro}</p>
+    <ol className="tool-guide-steps">{guide.steps.map((step) => <li key={step.title}><strong>{step.title}</strong><p>{step.text}</p></li>)}</ol>
+    <div className="tool-guide-tip"><strong>Helpful tip</strong><p>{guide.tip}</p></div>
+    <section className="tool-guide-faq" aria-label={`Frequently asked questions about ${guide.heading}`}>
+      <h3>Frequently asked questions</h3>
+      {guide.faqs.map((item) => <details key={item.q}><summary>{item.q}<ChevronDown size={16}/></summary><p>{item.a}</p></details>)}
+    </section>
+  </section>;
 }
 
 function RelatedTools({ current }) {
