@@ -11,9 +11,33 @@ const ImageTool = lazy(() => import('./components/ImageTool.jsx'));
 
 function PageMeta({ title, description }) {
   useEffect(() => {
-    document.title = title ? `${title} — FileFix` : 'FileFix — Free PDF & Image Tools';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta && description) meta.setAttribute('content', description);
+    const pageTitle = title ? `${title} — FileFix` : 'FileFix — Free PDF & Image Tools';
+    const pageDescription = description || 'Free browser-based PDF and image tools for everyday file tasks.';
+    document.title = pageTitle;
+    const setMeta = (selector, attribute, value) => {
+      let element = document.querySelector(selector);
+      if (!element) {
+        element = document.createElement('meta');
+        const [key, name] = selector.match(/\[(name|property)="([^"]+)"\]/).slice(1);
+        element.setAttribute(key, name);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', value);
+    };
+    setMeta('meta[name="description"]', 'name', pageDescription);
+    setMeta('meta[property="og:title"]', 'property', pageTitle);
+    setMeta('meta[property="og:description"]', 'property', pageDescription);
+    setMeta('meta[name="twitter:title"]', 'name', pageTitle);
+    setMeta('meta[name="twitter:description"]', 'name', pageDescription);
+    const pageUrl = window.location.origin + window.location.pathname;
+    setMeta('meta[property="og:url"]', 'property', pageUrl);
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', pageUrl);
   }, [title, description]);
   return null;
 }
