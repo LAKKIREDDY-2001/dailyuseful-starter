@@ -16,3 +16,22 @@
 @page{size:A4;margin:20mm}@media print{body{background:#fff!important}.site-header,.site-footer,.breadcrumbs,.tool-heading,.tool-note,.related-section,.ad-slot{display:none!important}.app-shell,.tool-page{display:block!important;width:auto;min-height:0;margin:0;padding:0}.workspace{display:block!important;padding:0;border:0;border-radius:0;box-shadow:none;background:#fff}.workspace>:not(.print-document){display:none!important}.print-document{position:static;min-height:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;white-space:pre-wrap;overflow:visible;background:#fff;color:#111}.print-document h1{font-size:20pt}.print-document p{font-size:11pt;line-height:1.55}}
 .print-document img{display:block;max-width:100%;max-height:60vh;margin:18px auto;object-fit:contain}.print-document img{max-height:240mm;page-break-inside:avoid}@media not print{.print-document img{max-height:60vh}}
 .download-item{display:grid;gap:7px;min-width:190px;max-width:340px;padding:9px;border:1px solid #c7eadc;border-radius:10px;background:var(--surface)}.download-name{display:grid;gap:4px;color:var(--muted);font-size:.72rem;font-weight:650}.download-input-row{display:flex;align-items:center;gap:6px}.download-name input{min-width:0;flex:1;width:1px;height:37px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft);color:var(--ink);font:inherit}.download-ext{flex:none;color:var(--muted);font-size:.75rem}.download-item .button{width:100%;justify-content:space-between}
+
+.tool-guide{margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.tool-guide h2{margin:7px 0 8px;font-family:Manrope,ui-sans-serif,sans-serif;font-size:clamp(1.35rem,2.7vw,1.8rem);letter-spacing:-.04em}
+.tool-guide-intro{max-width:820px;margin:0;color:var(--muted);line-height:1.7}
+.tool-guide-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:22px 0;padding:0;list-style:none;counter-reset:guide-step}
+.tool-guide-steps li{padding:16px;border:1px solid var(--line);border-radius:13px;background:var(--surface-soft);counter-increment:guide-step}
+.tool-guide-steps li:before{content:counter(guide-step);display:grid;place-items:center;width:29px;height:29px;margin-bottom:11px;border-radius:9px;background:var(--primary);color:#fff;font-size:.8rem;font-weight:800}
+.tool-guide-steps strong{font-size:.9rem}
+.tool-guide-steps p,.tool-guide-tip p,.tool-guide-faq details p{margin:7px 0 0;color:var(--muted);font-size:.85rem;line-height:1.65}
+.tool-guide-tip{padding:15px 17px;border-left:3px solid var(--green);border-radius:0 10px 10px 0;background:var(--surface-soft)}
+.tool-guide-tip strong{font-size:.87rem}
+.tool-guide-faq{margin-top:23px}
+.tool-guide-faq h3{margin:0 0 11px;font-family:Manrope,ui-sans-serif,sans-serif;font-size:1.08rem}
+.tool-guide-faq details{padding:13px 0;border-top:1px solid var(--line)}
+.tool-guide-faq summary{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.88rem;font-weight:700;cursor:pointer;list-style:none}
+.tool-guide-faq summary::-webkit-details-marker{display:none}
+.tool-guide-faq summary svg{flex:none;color:var(--muted)}
+.tool-guide-faq details p{max-width:850px}
+@media(max-width:720px){.tool-guide{padding:18px}.tool-guide-steps{grid-template-columns:1fr;gap:9px}}
