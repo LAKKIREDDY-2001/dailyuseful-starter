@@ -135,11 +135,13 @@ function InfoPage({ type }) {
     contact: {
       title: 'Contact FileFix',
       eyebrow: 'FEEDBACK AND SUPPORT',
-      description: 'FileFix is an independent project. A dedicated support email has not been configured yet.',
+      description: 'Have a question, suggestion, or issue with a FileFix tool? Contact us by email.',
       paragraphs: [
-        'For feedback or to report a problem, you may visit the project repository on GitHub. If the Issues feature is enabled, you can open an issue there.',
-        'GitHub issues may be public. Do not post documents, images, passwords, identity numbers, banking details, or other private information. Include only a description of the problem and non-sensitive details needed to reproduce it.'
+        'Support email: lakkistudy@gmail.com',
+        'When reporting a problem, include the tool name, your browser, and a brief description of what happened. Please do not email passwords, banking details, identity numbers, or sensitive documents unless absolutely necessary.',
+        'You can also report bugs or suggest improvements through the project feedback page. Public issues should never include private information.'
       ],
+      email: 'lakkistudy@gmail.com',
       link: { href: 'https://github.com/LAKKIREDDY-2001/dailyuseful-starter/issues', label: 'Visit the project feedback page' }
     },
     terms: {
@@ -165,6 +167,7 @@ function InfoPage({ type }) {
     <h1>{page.title}</h1>
     <p className="lead">{page.description}</p>
     {page.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+    {page.email && <p><a className="button primary" href={`mailto:${page.email}`}>Email FileFix: {page.email} <ArrowRight size={16}/></a></p>}
     {page.link && <p><a className="button secondary" href={page.link.href} target="_blank" rel="noreferrer">{page.link.label} <ArrowRight size={16}/></a></p>}
     <Link className="button secondary" to="/">Back to all tools <ArrowRight size={16}/></Link>
   </main>;
