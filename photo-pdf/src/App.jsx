@@ -110,17 +110,69 @@ function RelatedTools({ current }) {
 }
 
 function InfoPage({ type }) {
-  const content = {
-    about: { title: 'About FileFix', eyebrow: 'A SMALL, HONEST TOOLBOX', body: 'FileFix brings practical PDF and image utilities together in one browser-based website. Supported operations run on your device using open-source libraries. Features that need a specialized engine are labeled unavailable instead of being presented as working.', extra: 'FileFix is an independent project and is not affiliated with an exam authority, document provider, or PDF vendor.' },
-    privacy: { title: 'Privacy', eyebrow: 'FILES STAY LOCAL', body: 'FileFix does not upload documents or images. Processing happens in your browser with the selected file and temporary browser memory. The site does not include analytics, third-party advertising scripts, accounts, or a server-side file queue.', extra: 'Object URLs and rendering canvases are released after use. Clearing this page or closing the tab also releases browser memory. Browser storage is not used for your files.' },
-    contact: { title: 'Contact', eyebrow: 'NO MESSAGE SERVICE CONFIGURED', body: 'This free static release has no contact form or support mailbox configured, and it does not collect messages. If you host this project, add your own public contact address before launch.', extra: 'Do not put private documents, passwords, PANs, or banking information into a public issue or message.' },
-  }[type];
-  return <main className="container info-page"><PageMeta title={content.title} description={content.body}/><span className="eyebrow">{content.eyebrow}</span><h1>{content.title}</h1><p className="lead">{content.body}</p><p>{content.extra}</p><Link className="button secondary" to="/">Back to all tools <ArrowRight size={16}/></Link></main>;
+  const pages = {
+    about: {
+      title: 'About FileFix',
+      eyebrow: 'A SMALL, HONEST TOOLBOX',
+      description: 'FileFix is an independent browser-based toolbox for everyday PDF and image tasks. Tools marked available run using browser capabilities and included libraries. Tools that are not implemented are marked as coming soon rather than presented as working.',
+      paragraphs: [
+        'FileFix is not affiliated with any government agency, examination authority, passport authority, PDF vendor, or document provider.',
+        'Availability and results can vary by file, browser, device memory, and file complexity. Please review each exported file before relying on it.'
+      ]
+    },
+    privacy: {
+      title: 'Privacy Policy',
+      eyebrow: 'YOUR FILES AND YOUR PRIVACY',
+      description: 'Last updated: 28 October 2026. This policy describes the current free version of FileFix.',
+      paragraphs: [
+        'File processing: For tools marked available, file operations are designed to run in your browser. FileFix does not operate a server-side file upload queue. Do not use a tool if your browser indicates that a file is being sent somewhere unexpected.',
+        'Technical information: Like most websites, the hosting and delivery infrastructure may process technical request information (for example, IP address, browser details, and request time) to deliver and protect the site. Such processing is governed by the hosting provider’s own policies.',
+        'Browser storage: FileFix uses your browser’s local storage only to remember your light/dark theme preference. It is not used by this app to store your uploaded documents.',
+        'Advertising and analytics: No third-party advertising or analytics script is currently enabled in this release. If advertising, analytics, or other third-party services are added later, this policy will be updated before those services are enabled. Those providers may process information under their own policies.',
+        'Your choices: You can close the page to end the current session and clear this site’s browser storage through your browser settings. Avoid uploading files containing highly sensitive information to any online tool unless you have assessed whether it is appropriate for your needs.'
+      ]
+    },
+    contact: {
+      title: 'Contact FileFix',
+      eyebrow: 'FEEDBACK AND SUPPORT',
+      description: 'FileFix is an independent project. A dedicated support email has not been configured yet.',
+      paragraphs: [
+        'For feedback or to report a problem, you may visit the project repository on GitHub. If the Issues feature is enabled, you can open an issue there.',
+        'GitHub issues may be public. Do not post documents, images, passwords, identity numbers, banking details, or other private information. Include only a description of the problem and non-sensitive details needed to reproduce it.'
+      ],
+      link: { href: 'https://github.com/LAKKIREDDY-2001/dailyuseful-starter/issues', label: 'Visit the project feedback page' }
+    },
+    terms: {
+      title: 'Terms of Use',
+      eyebrow: 'PLEASE READ BEFORE USING FILEFIX',
+      description: 'Last updated: 28 October 2026.',
+      paragraphs: [
+        'By using FileFix, you agree to use the site lawfully and in accordance with these terms. If you do not agree, please stop using the site.',
+        'What the service provides: FileFix offers browser-based PDF and image utilities. Some catalog entries are not implemented and are labelled as coming soon or unavailable. We may add, change, suspend, or remove tools without notice.',
+        'Your files and rights: You remain responsible for your files and must have the rights and permissions needed to process them. You are responsible for keeping original copies and for protecting sensitive information.',
+        'Check your results: Tools are provided for convenience and may produce incomplete, altered, or unsuitable output. Always open and verify the exported file before submitting, printing, sharing, or relying on it. Check the current official requirements for passport, examination, legal, financial, and other important documents.',
+        'No professional advice: FileFix does not provide legal, government, identity-verification, or professional document-compliance services. An image of a signature is not a certificate-backed digital signature. Cropping a PDF does not securely erase hidden content.',
+        'Availability and warranty: The site is provided on an “as available” basis to the extent permitted by applicable law. We do not guarantee uninterrupted access, error-free operation, compatibility with every file, or that a result will meet a particular requirement.',
+        'Liability: To the maximum extent permitted by applicable law, FileFix and its project maintainers are not liable for indirect or consequential loss arising from use of the site. Nothing in these terms excludes rights or liability that cannot lawfully be excluded.',
+        'Changes: These terms may be updated as the site changes. The “Last updated” date above indicates the latest revision.'
+      ]
+    }
+  };
+  const page = pages[type] || pages.about;
+  return <main className="container info-page">
+    <PageMeta title={page.title} description={page.description}/>
+    <span className="eyebrow">{page.eyebrow}</span>
+    <h1>{page.title}</h1>
+    <p className="lead">{page.description}</p>
+    {page.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+    {page.link && <p><a className="button secondary" href={page.link.href} target="_blank" rel="noreferrer">{page.link.label} <ArrowRight size={16}/></a></p>}
+    <Link className="button secondary" to="/">Back to all tools <ArrowRight size={16}/></Link>
+  </main>;
 }
 
 function NotFound() { return <main className="container info-page"><span className="eyebrow">404 · NOT FOUND</span><h1>That page is not here.</h1><p className="lead">The link may be old. Browse the available tools or return home.</p><Link className="button primary" to="/">Browse tools <ArrowRight size={16}/></Link></main>; }
 
-function ToolWorkspaceRouter() { return <Routes><Route path="/" element={<Home/>}/><Route path="/tools/:toolId" element={<ToolPage/>}/><Route path="/about" element={<InfoPage type="about"/>}/><Route path="/privacy" element={<InfoPage type="privacy"/>}/><Route path="/contact" element={<InfoPage type="contact"/>}/><Route path="*" element={<NotFound/>}/></Routes>; }
+function ToolWorkspaceRouter() { return <Routes><Route path="/" element={<Home/>}/><Route path="/tools/:toolId" element={<ToolPage/>}/><Route path="/about" element={<InfoPage type="about"/>}/><Route path="/privacy" element={<InfoPage type="privacy"/>}/><Route path="/terms" element={<InfoPage type="terms"/>}/><Route path="/contact" element={<InfoPage type="contact"/>}/><Route path="*" element={<NotFound/>}/></Routes>; }
 
 export default function App() {
   const [theme, setTheme] = useState(() => { try { return localStorage.getItem('filefix-theme') || 'light'; } catch { return 'light'; } });
@@ -134,4 +186,4 @@ export default function App() {
   return <div className="app-shell"><Header theme={theme} onTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')} mobileNav={mobileNav} onMenu={() => setMobileNav(!mobileNav)}/><ToolWorkspaceRouter/><Footer/></div>;
 }
 
-function AdSlot({ home = false }) { return <aside className={`ad-slot ${home ? 'container' : ''}`} aria-label="Reserved advertising area">Ad placement reserved · no ad script is active</aside>; }
+function AdSlot() { return null; }
