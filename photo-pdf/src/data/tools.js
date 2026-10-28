@@ -75,3 +75,131 @@ export const toolNotes = {
   'exam-photo': 'No authority presets are bundled. Enter dimensions from the current official application specifications.',
   'passport-photo': 'Country and application requirements differ. Verify the current official rules before using an export.',
 };
+
+
+/*
+ * Practical, tool-specific guidance helps visitors understand the workflow and limitations
+ * before processing important documents. Keep instructions aligned with actual browser features.
+ */
+export const toolGuides = {
+  'merge-pdf': {
+    heading: 'How to merge PDF files online',
+    intro: 'Combine multiple PDF documents into one file directly in your browser. Arrange the files in the order you want them to appear before exporting.',
+    steps: [
+      { title: 'Choose your PDF files', text: 'Select two or more PDF documents from your device. Keep the original files in case you need to start again.' },
+      { title: 'Check the order', text: 'Review the selected file list and move files into the order you want. The first file becomes the beginning of the combined document.' },
+      { title: 'Create and download the PDF', text: 'Run the merge action, then download the combined file and open it to check page order and formatting.' }
+    ],
+    tip: 'If a document contains confidential information, use a device you trust and review the file before sharing the merged result.',
+    faqs: [
+      { q: 'Can I combine more than two PDFs?', a: 'Yes. Select multiple PDF files. Very large documents may use substantial browser memory, so try smaller batches if processing fails.' },
+      { q: 'Will merging reduce file size?', a: 'Merging combines documents; it does not promise compression. The final file may be larger than any individual input.' },
+      { q: 'Are my PDFs uploaded?', a: 'This tool is designed to process selected files in your browser rather than sending them to a FileFix upload server. You can keep your originals on your device.' }
+    ]
+  },
+  'compress-pdf': {
+    heading: 'How to compress a PDF file',
+    intro: 'Use this tool to rewrite a PDF and compare the actual output size with the original. It can remove some structural overhead, but it does not re-encode embedded images.',
+    steps: [
+      { title: 'Select a PDF', text: 'Choose the document you want to reduce. Keep an untouched copy of the original.' },
+      { title: 'Run the compression rewrite', text: 'Start processing and wait for the browser to create a new PDF file.' },
+      { title: 'Compare sizes and check quality', text: 'Review the measured before-and-after file sizes, download the result, and open it to make sure the pages still look correct.' }
+    ],
+    tip: 'This tool may not make every PDF smaller, especially PDFs that are already optimized or contain large embedded images. Use the reported file size rather than assuming a reduction.',
+    faqs: [
+      { q: 'Why did my PDF not get smaller?', a: 'The tool rewrites the PDF structure but does not re-encode embedded images. Some PDFs have little removable overhead, so the result may be the same size or larger.' },
+      { q: 'Will text and images remain the same quality?', a: 'The tool does not intentionally downsample embedded images. Still, open and review the exported document before using it.' },
+      { q: 'Is there a guaranteed target size?', a: 'No. The result depends on the source PDF structure. This version does not guarantee a specific size or percentage reduction.' }
+    ]
+  },
+  'split-pdf': {
+    heading: 'How to split a PDF into separate files',
+    intro: 'Extract selected page ranges from a PDF when you need only certain pages. Check the page numbering carefully before exporting.',
+    steps: [
+      { title: 'Upload your PDF', text: 'Choose the source document and wait for the page information to load.' },
+      { title: 'Enter the page range', text: 'Specify the page or range you want to extract using the format shown in the tool. Confirm the range matches the pages you need.' },
+      { title: 'Export and verify', text: 'Create the output file, download it, and open it to confirm that the expected pages are present.' }
+    ],
+    tip: 'PDF page numbers may differ from printed page numbers inside a document. Use the PDF viewer’s page count when selecting ranges.',
+    faqs: [
+      { q: 'Can I extract one page?', a: 'Yes. Enter the single page number in the page-range control, then export and check the resulting PDF.' },
+      { q: 'Does splitting change the original?', a: 'The tool creates a separate output file. Keep your original as a backup.' },
+      { q: 'Why did my page range fail?', a: 'Check that the range uses the format shown in the interface and that every requested page exists in the source PDF.' }
+    ]
+  },
+  'jpg-to-pdf': {
+    heading: 'How to convert JPG images to PDF',
+    intro: 'Place supported images into a single PDF document. This is useful for combining scanned pages, receipts, or photos into one file.',
+    steps: [
+      { title: 'Select your images', text: 'Choose the JPG or PNG images you want to include. Select them in the order you want the pages to appear.' },
+      { title: 'Review the sequence', text: 'Check the selected image list before creating the PDF. Use clear, correctly oriented source images for the best result.' },
+      { title: 'Create and inspect the PDF', text: 'Generate the PDF, download it, and open it to confirm that every page is readable and in the right order.' }
+    ],
+    tip: 'If you are preparing documents for an official application, check the required page size, image clarity, and file-size limit before submitting.',
+    faqs: [
+      { q: 'Can I put several photos into one PDF?', a: 'Yes. Select multiple supported images and arrange them in the order you want.' },
+      { q: 'Will the PDF look exactly like the original photo?', a: 'The image is placed on a PDF page, so page dimensions and scaling can affect how it appears. Review the exported PDF before sharing.' },
+      { q: 'Which image formats are supported?', a: 'This version accepts JPEG and PNG images in this workflow. Convert unsupported formats to one of these formats first.' }
+    ]
+  },
+  'pdf-to-jpg': {
+    heading: 'How to convert PDF pages to JPG images',
+    intro: 'Render pages from a PDF as image files for previewing, sharing, or use in image-based workflows.',
+    steps: [
+      { title: 'Choose the PDF', text: 'Select the PDF document and wait for the pages to load.' },
+      { title: 'Choose the pages and settings', text: 'Use the available page and scale controls. Higher render scales can produce larger images and use more memory.' },
+      { title: 'Download and check the images', text: 'Export the JPG files and inspect text, edges, and image clarity before using them elsewhere.' }
+    ],
+    tip: 'JPG is a lossy image format and does not preserve selectable PDF text. Keep the original PDF if you need searchable or accessible text.',
+    faqs: [
+      { q: 'Does each PDF page become an image?', a: 'The tool renders PDF pages as images. Review the exported files to ensure the expected pages were included.' },
+      { q: 'Why are the output images large?', a: 'Image dimensions and render scale affect file size. Lowering the scale can reduce size but may make small text harder to read.' },
+      { q: 'Can I search text in the JPG?', a: 'No. A JPG is an image, not a searchable PDF. Keep the original document if you need selectable text.' }
+    ]
+  },
+  'resize-image': {
+    heading: 'How to resize an image to exact dimensions',
+    intro: 'Change an image’s pixel width and height for web forms, documents, or everyday use. Keep the proportions locked when you do not want the image to stretch.',
+    steps: [
+      { title: 'Choose an image', text: 'Select a supported image file and note its original width and height.' },
+      { title: 'Enter the new dimensions', text: 'Type the desired pixel width and height. Keep the aspect ratio locked to preserve proportions, or unlock it only when stretching is intentional.' },
+      { title: 'Export and check the result', text: 'Create the resized image, download it, and verify the dimensions and appearance.' }
+    ],
+    tip: 'Resizing changes pixel dimensions; it does not automatically meet every website or government application’s photo requirements. Check the current official specifications.',
+    faqs: [
+      { q: 'What does keeping the aspect ratio mean?', a: 'It preserves the relationship between width and height so the image is less likely to look stretched or squashed.' },
+      { q: 'Will resizing improve image quality?', a: 'Resizing does not add detail that was not in the original. Enlarging a small image may make it look soft or pixelated.' },
+      { q: 'How do I choose the right dimensions?', a: 'Use the pixel dimensions requested by the destination website or form. If there is no requirement, choose dimensions suitable for how the image will be displayed.' }
+    ]
+  },
+  'compress-image': {
+    heading: 'How to reduce image file size',
+    intro: 'Adjust image format and quality to create a smaller file. The result reports its measured size, because not every image becomes smaller with every setting.',
+    steps: [
+      { title: 'Choose an image', text: 'Select the image you want to optimize and note its original file size.' },
+      { title: 'Choose format and quality', text: 'Use the available output format and quality settings. Lower quality can reduce file size but may introduce visible artifacts.' },
+      { title: 'Compare and download', text: 'Generate the output, compare the actual sizes, and inspect the image at normal viewing size before using it.' }
+    ],
+    tip: 'Keep the original image. JPEG is useful for photographs but does not preserve transparency; PNG is useful when transparency matters, though files can be larger.',
+    faqs: [
+      { q: 'How much smaller will my image become?', a: 'There is no fixed reduction. It depends on the original image, format, dimensions, and quality setting.' },
+      { q: 'Will compression reduce image quality?', a: 'Lossy formats and lower quality settings can reduce detail. Compare the exported image with the original before using it.' },
+      { q: 'Why is the output file larger?', a: 'The selected format or encoding settings may be less efficient for that particular image. Try another supported format or quality setting and compare the measured sizes.' }
+    ]
+  },
+  'crop-image': {
+    heading: 'How to crop an image cleanly',
+    intro: 'Crop an image to focus on the subject or fit a target aspect ratio. Cropping removes the areas outside the chosen frame from the exported image.',
+    steps: [
+      { title: 'Select your image', text: 'Choose the photo and wait for the preview to load.' },
+      { title: 'Set the crop or aspect ratio', text: 'Adjust the frame around the important content. Check that faces, text, and other required details remain inside the crop.' },
+      { title: 'Export and review', text: 'Download the cropped image and check the final edges and dimensions.' }
+    ],
+    tip: 'For official photos, confirm the current required framing and dimensions with the relevant authority before submitting.',
+    faqs: [
+      { q: 'Does cropping change the original file?', a: 'The tool exports a new image. Keep the original so you can adjust the crop again if needed.' },
+      { q: 'What is an aspect ratio?', a: 'It is the relationship between image width and height, such as 1:1 for a square or 4:3 for a landscape frame.' },
+      { q: 'Can cropping securely remove private information?', a: 'Cropping changes the exported visible image, but do not rely on it as a secure redaction method for sensitive information.' }
+    ]
+  }
+};
