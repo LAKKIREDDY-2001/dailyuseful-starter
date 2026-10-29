@@ -12,8 +12,8 @@ A browser-based React/Vite toolkit. Supported PDF and image operations run local
 
 ## Deploy to Cloudflare Pages
 
-1. Connect this repository to a new Pages project.
-2. Set the project root to photo-pdf.
+1. Connect this repository to a new Cloudflare Pages project named `filefix` (if that name is available).
+2. Set the project root to `photo-pdf`.
 3. Set the build command to npm run build and output directory to dist.
 4. Deploy and check direct links such as /tools/resize-image and /tools/html-to-pdf.
 
